@@ -1,4 +1,4 @@
-package fr.n7.game.flappyzombie.fr.n7.game.flappyzombie.fr.n7.game.flappyzombie.world;
+package fr.n7.game.flappyzombie.world.renderers;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -8,7 +8,8 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Shape2D;
 
-import fr.n7.game.flappyzombie.fr.n7.game.flappyzombie.AppContext;
+import fr.n7.game.flappyzombie.AppContext;
+import fr.n7.game.flappyzombie.world.FlappyWorld;
 
 /**
  * Created by Nementon on 05/04/2015.

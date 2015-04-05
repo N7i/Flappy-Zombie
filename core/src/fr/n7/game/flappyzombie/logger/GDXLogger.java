@@ -1,4 +1,4 @@
-package fr.n7.game.flappyzombie.fr.n7.game.flappyzombie.logger;
+package fr.n7.game.flappyzombie.logger;
 
 import com.badlogic.gdx.Application;
 

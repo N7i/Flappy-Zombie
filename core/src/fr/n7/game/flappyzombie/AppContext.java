@@ -1,10 +1,9 @@
-package fr.n7.game.flappyzombie.fr.n7.game.flappyzombie;
+package fr.n7.game.flappyzombie;
 
-import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Gdx;
 
-import fr.n7.game.flappyzombie.fr.n7.game.flappyzombie.logger.GDXLogger;
-import fr.n7.game.flappyzombie.fr.n7.game.flappyzombie.logger.ILogger;
+import fr.n7.game.flappyzombie.logger.GDXLogger;
+import fr.n7.game.flappyzombie.logger.ILogger;
 
 /**
  * Created by Nementon on 05/04/2015.

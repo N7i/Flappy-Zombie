@@ -1,4 +1,4 @@
-package fr.n7.game.flappyzombie.fr.n7.game.flappyzombie.fr.n7.game.flappyzombie.world;
+package fr.n7.game.flappyzombie.world;
 
 
 import com.badlogic.gdx.math.Rectangle;
@@ -8,7 +8,7 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
-import fr.n7.game.flappyzombie.fr.n7.game.flappyzombie.AppContext;
+import fr.n7.game.flappyzombie.AppContext;
 
 /**
  * Created by Nementon on 05/04/2015.

@@ -1,12 +1,10 @@
-package fr.n7.game.flappyzombie.fr.n7.game.flappyzombie.screens;
+package fr.n7.game.flappyzombie.screens;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.GL20;
 
-import fr.n7.game.flappyzombie.fr.n7.game.flappyzombie.AppContext;
-import fr.n7.game.flappyzombie.fr.n7.game.flappyzombie.fr.n7.game.flappyzombie.world.IWorld;
-import fr.n7.game.flappyzombie.fr.n7.game.flappyzombie.fr.n7.game.flappyzombie.world.IWorldRenderer;
+import fr.n7.game.flappyzombie.AppContext;
+import fr.n7.game.flappyzombie.world.IWorld;
+import fr.n7.game.flappyzombie.world.renderers.IWorldRenderer;
 
 /**
  * Created by Nementon on 05/04/2015.

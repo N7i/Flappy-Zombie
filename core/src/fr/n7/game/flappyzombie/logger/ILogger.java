@@ -1,4 +1,4 @@
-package fr.n7.game.flappyzombie.fr.n7.game.flappyzombie.logger;
+package fr.n7.game.flappyzombie.logger;
 
 /**
  * Created by Nementon on 05/04/2015.
