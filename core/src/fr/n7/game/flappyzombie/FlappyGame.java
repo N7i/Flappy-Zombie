@@ -8,6 +8,8 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import fr.n7.game.flappyzombie.fr.n7.game.flappyzombie.AppContext;
+import fr.n7.game.flappyzombie.fr.n7.game.flappyzombie.fr.n7.game.flappyzombie.world.FlappyRenderer;
+import fr.n7.game.flappyzombie.fr.n7.game.flappyzombie.fr.n7.game.flappyzombie.world.FlappyWorld;
 import fr.n7.game.flappyzombie.fr.n7.game.flappyzombie.screens.DefaultScreen;
 
 public class FlappyGame extends Game {
@@ -17,6 +19,9 @@ public class FlappyGame extends Game {
     @Override
     public void create() {
         AppContext.logger().log("Created");
-        setScreen(new DefaultScreen());
+        setScreen(new DefaultScreen(
+                new FlappyWorld(),
+                new FlappyRenderer()
+        ));
     }
 }

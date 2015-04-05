@@ -1,15 +1,26 @@
 package fr.n7.game.flappyzombie.fr.n7.game.flappyzombie.screens;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.GL20;
 
 import fr.n7.game.flappyzombie.fr.n7.game.flappyzombie.AppContext;
+import fr.n7.game.flappyzombie.fr.n7.game.flappyzombie.fr.n7.game.flappyzombie.world.IWorld;
+import fr.n7.game.flappyzombie.fr.n7.game.flappyzombie.fr.n7.game.flappyzombie.world.IWorldRenderer;
 
 /**
  * Created by Nementon on 05/04/2015.
  */
 public class DefaultScreen implements Screen {
 
-    public DefaultScreen() {
+    private IWorld _world;
+    private IWorldRenderer _renderer;
+
+    public DefaultScreen(IWorld world, IWorldRenderer worldRenderer) {
+
+        _world = world;
+        _renderer = worldRenderer;
+
         AppContext.logger().log("Attached");
     }
 
@@ -21,6 +32,8 @@ public class DefaultScreen implements Screen {
     @Override
     public void render(float delta) {
 
+        _world.update(delta);
+        _renderer.render();
     }
 
     @Override
