@@ -9,6 +9,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import fr.n7.game.flappyzombie.AppContext;
+import fr.n7.game.flappyzombie.world.models.Bird;
 
 /**
  * Created by Nementon on 05/04/2015.
@@ -20,12 +21,14 @@ public class FlappyWorld implements I2DWorld {
     private List<Shape2D>_shapes = new LinkedList<Shape2D>();
     private int _worldWidth;
     private int _worldHeight;
+    private Bird _bird;
 
     public FlappyWorld(int worldWidth, int worldHeight) {
 
         _worldWidth = worldWidth;
         _worldHeight = worldHeight;
         _shapes.add(rect);
+        _bird = new Bird(33, (_worldWidth / 2) - 6, 17, 12);
     }
 
     public int width(){
@@ -43,17 +46,11 @@ public class FlappyWorld implements I2DWorld {
     @Override
     public void update(float delta) {
         AppContext.logger().log("FlappyWorld", "Update, fps : " + (1/delta));
+        _bird.update(delta);
+    }
 
-        rect.x++;
-        rect.y++;
-
-        if (isXPosOutOfBounds()) {
-            rect.x = 0;
-        }
-
-        if (isYPosOutOfBounds()) {
-            rect.y = 0;
-        }
+    public Bird bird() {
+        return _bird;
     }
 
     private boolean isYPosOutOfBounds() {

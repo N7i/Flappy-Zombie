@@ -5,5 +5,5 @@ package fr.n7.game.flappyzombie.world.renderers;
  */
 public interface IWorldRenderer {
 
-    public void render();
+    public void render(float runTime);
 }
