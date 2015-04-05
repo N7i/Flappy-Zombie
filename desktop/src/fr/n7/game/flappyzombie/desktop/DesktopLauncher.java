@@ -9,8 +9,8 @@ public class DesktopLauncher {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 
         config.title = "Flappy Zombie";
-        config.width = 480;
-        config.height = 320;
+        config.width = 272;
+        config.height = 480;
 
 		new LwjglApplication(new FlappyGame(), config);
 	}
