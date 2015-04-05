@@ -13,15 +13,19 @@ import fr.n7.game.flappyzombie.fr.n7.game.flappyzombie.fr.n7.game.flappyzombie.w
 import fr.n7.game.flappyzombie.fr.n7.game.flappyzombie.screens.DefaultScreen;
 
 public class FlappyGame extends Game {
-	SpriteBatch batch;
-	Texture img;
+    SpriteBatch batch;
+    Texture img;
 
     @Override
     public void create() {
         AppContext.logger().log("Created");
+
+        FlappyWorld world = new FlappyWorld(136, 204);
+        FlappyRenderer worldRenderer = new FlappyRenderer(world);
+
         setScreen(new DefaultScreen(
-                new FlappyWorld(),
-                new FlappyRenderer()
+                world,
+                worldRenderer
         ));
     }
 }
