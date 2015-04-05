@@ -1,4 +1,4 @@
-package fr.n7.game.flappyzombie.screens;
+package fr.n7.game.flappyzombie.world.screens;
 
 import com.badlogic.gdx.Screen;
 
@@ -13,6 +13,7 @@ public class DefaultScreen implements Screen {
 
     private IWorld _world;
     private IWorldRenderer _renderer;
+    private float _runTime;
 
     public DefaultScreen(IWorld world, IWorldRenderer worldRenderer) {
 
@@ -29,9 +30,10 @@ public class DefaultScreen implements Screen {
 
     @Override
     public void render(float delta) {
+        _runTime += delta;
 
         _world.update(delta);
-        _renderer.render();
+        _renderer.render(_runTime);
     }
 
     @Override
