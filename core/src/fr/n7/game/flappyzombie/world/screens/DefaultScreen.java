@@ -1,26 +1,36 @@
 package fr.n7.game.flappyzombie.world.screens;
 
-import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.Gdx;
 
 import fr.n7.game.flappyzombie.AppContext;
-import fr.n7.game.flappyzombie.world.IWorld;
-import fr.n7.game.flappyzombie.world.renderers.IWorldRenderer;
+import fr.n7.game.flappyzombie.world.models.GameScene;
+import fr.n7.game.flappyzombie.world.renderers.Game2DRenderer;
+import fr.n7.game.flappyzombie.world.renderers.Render2DContext;
 
 /**
  * Created by Nementon on 05/04/2015.
  */
-public class DefaultScreen implements Screen {
+public class DefaultScreen implements I2DScreen {
 
-    private IWorld _world;
-    private IWorldRenderer _renderer;
-    private float _runTime;
+    private GameScene _gameScene;
+    private Game2DRenderer _renderer;
+    private float _elapsedTime;
 
-    public DefaultScreen(IWorld world, IWorldRenderer worldRenderer) {
+    public DefaultScreen(GameScene scene) {
 
-        _world = world;
-        _renderer = worldRenderer;
+        _gameScene = scene;
+        _renderer = new Game2DRenderer(
+                new Render2DContext(this));
 
         AppContext.logger().log("Attached");
+    }
+
+    public float width() {
+        return 136;
+    }
+
+    public float height() {
+        return Gdx.graphics.getHeight() / ( Gdx.graphics.getWidth() / width() );
     }
 
     @Override
@@ -30,10 +40,10 @@ public class DefaultScreen implements Screen {
 
     @Override
     public void render(float delta) {
-        _runTime += delta;
+        _elapsedTime += delta;
 
-        _world.update(delta);
-        _renderer.render(_runTime);
+        _gameScene.update(delta);
+        _renderer.render(_gameScene, _elapsedTime);
     }
 
     @Override
@@ -58,6 +68,8 @@ public class DefaultScreen implements Screen {
 
     @Override
     public void dispose() {
+
         AppContext.logger().log("Dispose");
+        _renderer.dispose();
     }
 }

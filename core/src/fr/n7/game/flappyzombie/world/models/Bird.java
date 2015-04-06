@@ -5,7 +5,7 @@ import com.badlogic.gdx.math.Vector2;
 /**
  * Created by Nementon on 05/04/2015.
  */
-public class Bird {
+public class Bird implements IGame2DEntity {
 
     private final int MAX_VELOCITY = 200;
     private final int MIN_ROTATION_ANGLE = -20;
@@ -27,7 +27,6 @@ public class Bird {
         _height = height;
     }
 
-    // TODO extract sub routines
     public void update(float delta) {
         _velocity.add(_acceleration.cpy().scl(delta));
         if (_velocity.y > MAX_VELOCITY) {

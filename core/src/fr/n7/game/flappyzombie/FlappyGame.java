@@ -7,8 +7,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import fr.n7.game.flappyzombie.helpers.AssetLoader;
 import fr.n7.game.flappyzombie.helpers.InputHandler;
-import fr.n7.game.flappyzombie.world.renderers.FlappyRenderer;
-import fr.n7.game.flappyzombie.world.FlappyWorld;
+import fr.n7.game.flappyzombie.world.models.GameScene;
 import fr.n7.game.flappyzombie.world.screens.DefaultScreen;
 
 public class FlappyGame extends Game {
@@ -21,14 +20,8 @@ public class FlappyGame extends Game {
 
         AssetLoader.load();
 
-        FlappyWorld world = new FlappyWorld(136, 204);
-        FlappyRenderer worldRenderer = new FlappyRenderer(world);
-
-        setScreen(new DefaultScreen(
-                world,
-                worldRenderer
-        ));
-
+        GameScene world = new GameScene(136, 204);
+        setScreen(new DefaultScreen(world));
         Gdx.input.setInputProcessor(new InputHandler(world.bird()));
     }
 
