@@ -36,6 +36,32 @@ public class ScrollHandler extends Game2DEntityGroup {
         _pipes.add(pipe3);
     }
 
+    public boolean collides(Bird bird) {
+        for (Pipe pipe : _pipes) {
+            if (pipe.collides(bird)) {
+                return true;
+            }
+        }
+
+        for(Grass grass : _grass) {
+            if (grass.collides(bird)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public void stop(){
+        for(Grass grass : _grass) {
+            grass.stop();
+        }
+
+        for(Pipe pipe : _pipes) {
+            pipe.stop();
+        }
+    }
+
     @Override
     public void update(float delta) {
         super.update(delta);

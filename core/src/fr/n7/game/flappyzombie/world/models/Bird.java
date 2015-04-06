@@ -1,5 +1,6 @@
 package fr.n7.game.flappyzombie.world.models;
 
+import com.badlogic.gdx.math.Circle;
 import com.badlogic.gdx.math.Vector2;
 
 /**
@@ -17,6 +18,8 @@ public class Bird implements IGame2DEntity {
     private int _width,
                 _height;
     private float _rotation;
+    private Circle _boundingCircle;
+    private boolean _isAlive;
 
     public Bird(float posX, float posY, int width, int height) {
 
@@ -25,6 +28,8 @@ public class Bird implements IGame2DEntity {
         _acceleration = new Vector2(0, 460);
         _width = width;
         _height = height;
+        _isAlive = true;
+        _boundingCircle = new Circle();
     }
 
     public void update(float delta) {
@@ -34,7 +39,7 @@ public class Bird implements IGame2DEntity {
         }
 
         _position.add(_velocity.cpy().scl(delta));
-
+        _boundingCircle.set(_position.x + 9, _position.y + 6, 6.5f);
         // Rotate counterclockwise
         if (isFlapping()) {
             _rotation -= 600 * delta;
@@ -67,7 +72,13 @@ public class Bird implements IGame2DEntity {
     }
 
     public void onClick() {
-        _velocity.y = -140;
+        if (_isAlive) {
+            _velocity.y = -140;
+        }
+    }
+
+    public void stop() {
+        _isAlive = false;
     }
 
     public float x() {
@@ -88,5 +99,9 @@ public class Bird implements IGame2DEntity {
 
     public float rotation() {
         return _rotation;
+    }
+
+    public Circle boundingCircle() {
+        return _boundingCircle;
     }
 }

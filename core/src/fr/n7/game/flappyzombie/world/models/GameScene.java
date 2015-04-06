@@ -20,6 +20,7 @@ public class GameScene extends Game2DEntityGroup {
     private int _worldWidth;
     private int _worldHeight;
     private Bird _bird;
+    private ScrollHandler _scrollHandler;
     List<IGame2DEntity> _child = new LinkedList<IGame2DEntity>();
 
     public GameScene(int worldWidth, int worldHeight) {
@@ -27,8 +28,9 @@ public class GameScene extends Game2DEntityGroup {
         _worldWidth = worldWidth;
         _worldHeight = worldHeight;
         _bird = new Bird(33, (_worldWidth / 2) - 6, 17, 12);
+        _scrollHandler = new ScrollHandler((_worldHeight /2 ) + 84);
 
-        _child.add(new ScrollHandler((_worldHeight /2 ) + 84));
+        _child.add(_scrollHandler);
         _child.add(_bird);
     }
 
@@ -38,6 +40,16 @@ public class GameScene extends Game2DEntityGroup {
 
     public float height() {
         return _worldHeight;
+    }
+
+    @Override
+    public void update(float delta) {
+        super.update(delta);
+
+        if (_scrollHandler.collides(_bird)) {
+            _scrollHandler.stop();
+            _bird.stop();
+        }
     }
 
     @Override

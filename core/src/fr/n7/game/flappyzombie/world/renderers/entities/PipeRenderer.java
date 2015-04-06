@@ -1,6 +1,8 @@
 package fr.n7.game.flappyzombie.world.renderers.entities;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
 import fr.n7.game.flappyzombie.helpers.AssetLoader;
 import fr.n7.game.flappyzombie.world.models.Pipe;
