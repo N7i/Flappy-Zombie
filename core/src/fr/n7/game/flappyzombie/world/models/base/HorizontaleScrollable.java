@@ -19,6 +19,9 @@ public abstract class HorizontaleScrollable implements IGame2DEntity {
     private float _height;
     private Rectangle _collisionShape;
 
+    private float _initX;
+    private float _initSpeed;
+
     public HorizontaleScrollable(float x, float y, int width, int height, float scrollSpeed) {
         _position = new Vector2(x, y);
         _velocity = new Vector2(scrollSpeed, 0);
@@ -32,6 +35,9 @@ public abstract class HorizontaleScrollable implements IGame2DEntity {
                 _height
 
         );
+
+        _initX = x;
+        _initSpeed = scrollSpeed;
     }
 
     public boolean collides(Bird bird) {
@@ -48,16 +54,16 @@ public abstract class HorizontaleScrollable implements IGame2DEntity {
         _velocity.x = 0;
     }
 
-    public Rectangle get_collisionShape() {
-        return _collisionShape;
-    }
-
     public void update(float delta) {
         _position.add(_velocity.cpy().scl(delta));
         _collisionShape.setX(_position.x);
     }
 
-    // Reset: Should Override in subclass for more specific behavior.
+    public  void restart() {
+        _position.x = _initX;
+        _velocity.x = _initSpeed;
+    }
+
     public abstract void reset(float newX);
 
     public boolean isScrolledLeft() {

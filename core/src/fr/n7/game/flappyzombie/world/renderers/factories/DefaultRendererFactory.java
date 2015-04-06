@@ -6,12 +6,14 @@ import java.util.concurrent.ConcurrentHashMap;
 import fr.n7.game.flappyzombie.AppContext;
 import fr.n7.game.flappyzombie.world.models.Bird;
 import fr.n7.game.flappyzombie.world.models.GameScene;
+import fr.n7.game.flappyzombie.world.models.GameStateHandler;
 import fr.n7.game.flappyzombie.world.models.Grass;
 import fr.n7.game.flappyzombie.world.models.Pipe;
 import fr.n7.game.flappyzombie.world.models.Score;
 import fr.n7.game.flappyzombie.world.renderers.entities.BirdRenderer;
 import fr.n7.game.flappyzombie.world.renderers.IGame2DRenderer;
 import fr.n7.game.flappyzombie.world.renderers.entities.GameSceneRenderer;
+import fr.n7.game.flappyzombie.world.renderers.entities.GameStateHandlerRenderer;
 import fr.n7.game.flappyzombie.world.renderers.entities.GrassRenderer;
 import fr.n7.game.flappyzombie.world.renderers.entities.NoopRenderer;
 import fr.n7.game.flappyzombie.world.renderers.entities.PipeRenderer;
@@ -29,6 +31,7 @@ public class DefaultRendererFactory implements IGame2DRendererFactory {
             put(Grass.class, GrassRenderer.class);
             put(Pipe.class, PipeRenderer.class);
             put(Score.class, ScoreRenderer.class);
+            put(GameStateHandler.class, GameStateHandlerRenderer.class);
         }
     };
 

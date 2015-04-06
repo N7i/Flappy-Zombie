@@ -7,7 +7,6 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
-import fr.n7.game.flappyzombie.AppContext;
 import fr.n7.game.flappyzombie.helpers.AssetLoader;
 import fr.n7.game.flappyzombie.world.models.base.Game2DEntityGroup;
 
@@ -23,19 +22,27 @@ public class GameScene extends Game2DEntityGroup {
     private Bird _bird;
     private Score _score;
     private ScrollHandler _scrollHandler;
-    List<IGame2DEntity> _child = new LinkedList<IGame2DEntity>();
+    private List<IGame2DEntity> _child = new LinkedList<IGame2DEntity>();
+    private GameState _gameState;
+
+    private enum GameState {
+        READY, RUNNING, GAMEOVER
+    }
 
     public GameScene(int worldWidth, int worldHeight) {
 
         _worldWidth = worldWidth;
         _worldHeight = worldHeight;
-        _bird = new Bird(33, (_worldWidth / 2) - 6, 17, 12);
+        _bird = new Bird(33, (_worldHeight / 2) + 6, 17, 12);
         _scrollHandler = new ScrollHandler((_worldHeight /2 ) + 84);
-        _score = new Score(_scrollHandler, _bird);
+        _score = new Score(this, _scrollHandler, _bird);
 
         _child.add(_scrollHandler);
         _child.add(_score);
         _child.add(_bird);
+        _child.add(new GameStateHandler(this));
+
+        _gameState = GameState.READY;
     }
 
     public float width(){
@@ -48,16 +55,63 @@ public class GameScene extends Game2DEntityGroup {
 
     @Override
     public void update(float delta) {
-        super.update(delta);
+        if (_gameState != GameState.READY) {
+            super.update(delta);
+        }
 
+        switch (_gameState) {
+            case READY:
+                updateReady(delta);
+                break;
+            case RUNNING:
+                updateRunning(delta);
+                break;
+            case GAMEOVER:
+                updateGameOver(delta);
+                break;
+        }
+    }
+
+    private void updateReady(float delta) {
+
+    }
+
+    private void updateRunning(float delta) {
         if (_bird.isAlive() && _scrollHandler.collides(_bird)) {
             _scrollHandler.stop();
             _bird.stop();
             AssetLoader.dead.play();
+            _gameState = GameState.GAMEOVER;
+        }
+    }
+
+    private void updateGameOver(float delta) {
+        _scrollHandler.collides(_bird);
+    }
+
+    public void start() {
+        if (_gameState != GameState.RUNNING) {
+            _gameState = GameState.RUNNING;
         }
         else {
-            _scrollHandler.collides(_bird);
+            restart();
         }
+    }
+
+    public void restart() {
+
+        _scrollHandler.restart();
+        _bird.restart();
+        _score.restart();
+        _gameState = GameState.READY;
+    }
+
+    public boolean isReady() {
+        return _gameState == GameState.READY;
+    }
+
+    public boolean isGameOver() {
+        return _gameState == GameState.GAMEOVER;
     }
 
     @Override

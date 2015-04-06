@@ -20,9 +20,9 @@ public class FlappyGame extends Game {
 
         AssetLoader.load();
 
-        GameScene world = new GameScene(136, 204);
-        setScreen(new DefaultScreen(world));
-        Gdx.input.setInputProcessor(new InputHandler(world.bird()));
+        GameScene scene = new GameScene(136, 204);
+        setScreen(new DefaultScreen(scene));
+        Gdx.input.setInputProcessor(new InputHandler(scene));
     }
 
     @Override

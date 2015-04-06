@@ -23,15 +23,29 @@ public class Bird implements IGame2DEntity {
     private Circle _boundingCircle;
     private boolean _isAlive;
 
+    private float _initPosY;
+    private final int _initAccelerationY = 460;
+
     public Bird(float posX, float posY, int width, int height) {
 
+        _initPosY = posY;
         _position = new Vector2(posX, posY);
         _velocity = new Vector2(0,0);
-        _acceleration = new Vector2(0, 460);
+        _acceleration = new Vector2(0, _initAccelerationY);
         _width = width;
         _height = height;
         _isAlive = true;
         _boundingCircle = new Circle();
+    }
+
+    public void restart() {
+        _rotation = 0;
+        _position.y = _initPosY;
+        _velocity.x = 0;
+        _velocity.y = 0;
+        _acceleration.x = 0;
+        _acceleration.y = _initAccelerationY;
+        _isAlive = true;
     }
 
     public void update(float delta) {
@@ -76,6 +90,7 @@ public class Bird implements IGame2DEntity {
 
     public void onClick() {
         if (_isAlive) {
+            AssetLoader.flap.play();
             _velocity.y = -140;
         }
     }

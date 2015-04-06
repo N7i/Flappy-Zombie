@@ -57,6 +57,16 @@ public class ScrollHandler extends Game2DEntityGroup {
         return false;
     }
 
+    public void restart() {
+        for(Grass grass : _grass) {
+            grass.restart();
+        }
+
+        for(Pipe pipe : _pipes) {
+            pipe.restart();
+        }
+    }
+
     public void stop(){
         for(Grass grass : _grass) {
             grass.stop();

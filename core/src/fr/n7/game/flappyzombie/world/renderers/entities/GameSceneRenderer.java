@@ -16,7 +16,7 @@ import fr.n7.game.flappyzombie.world.renderers.Render2DContext;
 public class GameSceneRenderer implements IGame2DRenderer<Render2DContext, GameScene> {
 
     @Override
-    public void render(Render2DContext context, GameScene word, float elapsedTime) {
+    public void render(Render2DContext context, GameScene scene, float elapsedTime) {
         resetScreenWithBlackColor();
         renderShapes(context);
     }

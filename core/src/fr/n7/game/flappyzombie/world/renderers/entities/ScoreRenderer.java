@@ -13,6 +13,10 @@ import fr.n7.game.flappyzombie.world.renderers.Render2DContext;
 public class ScoreRenderer implements IGame2DRenderer<Render2DContext, Score> {
     @Override
     public void render(Render2DContext renderContext, Score entity, float elapsedTime) {
+        if (entity.scene().isGameOver() || entity.scene().isReady()) {
+            return;
+        }
+
         SpriteBatch batcher = renderContext.batcher();
         String scoreStringify = String.valueOf(entity.score());
 

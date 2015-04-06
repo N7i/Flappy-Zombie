@@ -30,11 +30,6 @@ public class Pipe extends HorizontaleScrollable {
         );
     }
 
-
-    public Rectangle get_bottomCollisionShape() {
-        return _bottomCollisionShape;
-    }
-
     @Override
     public boolean collides(Bird bird) {
         if (position().x < bird.x() + bird.width()) {
