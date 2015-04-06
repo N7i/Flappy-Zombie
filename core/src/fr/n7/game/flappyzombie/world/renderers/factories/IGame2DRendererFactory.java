@@ -8,7 +8,6 @@ import fr.n7.game.flappyzombie.world.renderers.IGame2DRenderer;
 public interface IGame2DRendererFactory {
 
     IGame2DRenderer weakInstance(Class classType);
-    IGame2DRenderer newInstance(Class classType);
     void dispose();
 
 }

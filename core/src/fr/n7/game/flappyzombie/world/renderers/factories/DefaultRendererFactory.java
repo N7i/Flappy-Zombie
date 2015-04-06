@@ -47,7 +47,7 @@ public class DefaultRendererFactory implements IGame2DRendererFactory {
         return renderer;
     }
 
-    public IGame2DRenderer newInstance(Class classType) {
+    private IGame2DRenderer newInstance(Class classType) {
         Class renderClass = GameEntityRendererClassMap.get(classType);
 
         if (null == renderClass) {
