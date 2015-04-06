@@ -12,6 +12,15 @@ public class Grass extends HorizontaleScrollable {
     }
 
     @Override
+    public boolean collides(Bird bird) {
+         if (super.collides(bird))  {
+             bird.die();
+             return true;
+         }
+     return false;
+    }
+
+    @Override
     public void reset(float newX) {
         position().x = newX;
     }

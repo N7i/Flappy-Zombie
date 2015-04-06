@@ -3,6 +3,8 @@ package fr.n7.game.flappyzombie.world.models;
 import com.badlogic.gdx.math.Circle;
 import com.badlogic.gdx.math.Vector2;
 
+import fr.n7.game.flappyzombie.helpers.AssetLoader;
+
 /**
  * Created by Nementon on 05/04/2015.
  */
@@ -56,6 +58,7 @@ public class Bird implements IGame2DEntity {
                 _rotation = MAX_ROTATION_ANGLE;
             }
 
+
         }
     }
 
@@ -79,6 +82,11 @@ public class Bird implements IGame2DEntity {
 
     public void stop() {
         _isAlive = false;
+    }
+
+    public void die() {
+        _velocity.y = 0;
+        _acceleration.y = 0;
     }
 
     public float x() {

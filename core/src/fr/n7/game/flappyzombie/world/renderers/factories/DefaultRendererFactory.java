@@ -8,12 +8,14 @@ import fr.n7.game.flappyzombie.world.models.Bird;
 import fr.n7.game.flappyzombie.world.models.GameScene;
 import fr.n7.game.flappyzombie.world.models.Grass;
 import fr.n7.game.flappyzombie.world.models.Pipe;
+import fr.n7.game.flappyzombie.world.models.Score;
 import fr.n7.game.flappyzombie.world.renderers.entities.BirdRenderer;
 import fr.n7.game.flappyzombie.world.renderers.IGame2DRenderer;
 import fr.n7.game.flappyzombie.world.renderers.entities.GameSceneRenderer;
 import fr.n7.game.flappyzombie.world.renderers.entities.GrassRenderer;
 import fr.n7.game.flappyzombie.world.renderers.entities.NoopRenderer;
 import fr.n7.game.flappyzombie.world.renderers.entities.PipeRenderer;
+import fr.n7.game.flappyzombie.world.renderers.entities.ScoreRenderer;
 
 /**
  * Created by Nementon on 06/04/2015.
@@ -26,6 +28,7 @@ public class DefaultRendererFactory implements IGame2DRendererFactory {
             put(Bird.class, BirdRenderer.class);
             put(Grass.class, GrassRenderer.class);
             put(Pipe.class, PipeRenderer.class);
+            put(Score.class, ScoreRenderer.class);
         }
     };
 

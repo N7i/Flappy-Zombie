@@ -1,6 +1,7 @@
 package fr.n7.game.flappyzombie.world.models;
 
 import java.util.AbstractList;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -36,15 +37,19 @@ public class ScrollHandler extends Game2DEntityGroup {
         _pipes.add(pipe3);
     }
 
+    public List<Pipe> pipes() {
+        return Collections.unmodifiableList(_pipes);
+    }
+
     public boolean collides(Bird bird) {
-        for (Pipe pipe : _pipes) {
-            if (pipe.collides(bird)) {
+        for(Grass grass : _grass) {
+            if (grass.collides(bird)) {
                 return true;
             }
         }
 
-        for(Grass grass : _grass) {
-            if (grass.collides(bird)) {
+        for (Pipe pipe : _pipes) {
+            if (pipe.collides(bird)) {
                 return true;
             }
         }
