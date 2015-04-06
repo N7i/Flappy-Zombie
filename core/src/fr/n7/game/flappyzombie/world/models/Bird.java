@@ -104,4 +104,8 @@ public class Bird implements IGame2DEntity {
     public Circle boundingCircle() {
         return _boundingCircle;
     }
+
+    public boolean isAlive() {
+        return _isAlive;
+    }
 }

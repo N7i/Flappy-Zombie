@@ -8,6 +8,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import fr.n7.game.flappyzombie.AppContext;
+import fr.n7.game.flappyzombie.helpers.AssetLoader;
 import fr.n7.game.flappyzombie.world.models.base.Game2DEntityGroup;
 
 /**
@@ -46,9 +47,10 @@ public class GameScene extends Game2DEntityGroup {
     public void update(float delta) {
         super.update(delta);
 
-        if (_scrollHandler.collides(_bird)) {
+        if (_bird.isAlive() && _scrollHandler.collides(_bird)) {
             _scrollHandler.stop();
             _bird.stop();
+            AssetLoader.dead.play();
         }
     }
 
